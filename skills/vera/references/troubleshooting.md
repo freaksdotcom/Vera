@@ -87,9 +87,9 @@ Try one of these:
 Use `vera grep` for exact text or regex inside indexed files:
 
 ```sh
-vera grep "EMBEDDING_MODEL_BASE_URL"
-vera grep "TODO\(" -i
-vera grep "queryClient|invalidateQueries" --path "frontend/src/**"
+vera grep "EMBEDDING_MODEL_BASE_URL" --json | jq -r '.[].content'
+vera grep "TODO\(" -i --json | jq -r '.[].content'
+vera grep "queryClient|invalidateQueries" --path "frontend/src/**" --json | jq -r '.[].content'
 ```
 
 Use `rg` for file names, counting matches, or files outside the Vera index.

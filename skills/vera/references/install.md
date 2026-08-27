@@ -6,7 +6,7 @@
 npx -y @vera-ai/cli install   # or: bunx @vera-ai/cli install / uvx vera-ai install
 vera setup                      # interactive backend wizard
 vera index .
-vera search "your query"
+vera search "your query" --json | jq -r '.[] | "\(.file_path):\(.line_start)-\(.line_end) \(.symbol_type // ""):\(.symbol_name // "")\n\(.content)"'
 ```
 
 Combined setup + index: `vera setup --index .`
